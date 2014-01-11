@@ -76,8 +76,20 @@
 </table>
 
 <div id="footer">
-  <input type="checkbox" id="showall">
-  <span onClick="reload('<%= @path %>')">Show hidden files</span>
+  <div id="checkbox">
+    <span onClick="reload('<%= @path %>')">
+      <table border="0">
+	<tr valign="middle">
+	  <td>
+	    <img id="checkboximg" checked="false" src="/icon/checkbox-empty.png" height="20" style="vertical-align:middle;" />
+	  </td>
+	  <td>
+	    Show hidden files
+	  </td>
+	</tr>
+      </table>
+    </span>
+  </div>
 </div>
 
 
