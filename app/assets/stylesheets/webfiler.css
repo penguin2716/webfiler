@@ -1,0 +1,12 @@
+div.vertical-line {
+    width: 2px;
+    background-color: lightgray;
+    height: 100%;
+    float: left;
+}
+
+div.horizontal-line {
+    width: 100%;
+    background-color: lightgray;
+    height: 2px;
+}

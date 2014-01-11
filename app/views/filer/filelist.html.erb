@@ -1,0 +1,152 @@
+<script type="text/javascript">
+  <!--
+      parent.document.getElementById('currentpath').innerHTML = "<%= File.join(@path) %>"
+      showall = parent.document.getElementById('showall').checked
+      //-->
+</script>
+
+<% vid = 0 %>
+<% aid = 0 %>
+<% prefix = (params["action"] == "filelist_all") ? "/listall" : "/list" %>
+
+<h2>Contents</h2>
+
+<table width="400" cellspacing="0" cellpadding="0" border="0">
+
+  <% if File.dirname(@path) =~ /#{ENV["HOME"]}/ %>
+  <tr>
+    <td align="left">
+      <table width="100%">
+	<tr>
+	  <td valign="middle">
+	    <table border="0">
+	      <tr>
+		<td>
+		  <a href="<%= File.dirname(@path) %>">
+		    <img src="/icon/folder.png" height="20px" style="vertical-align:middle">
+		  </a>
+		</td>
+		<td>
+		  <a href="<%= File.join(prefix, File.dirname(@path)) %>">
+		    ../
+		  </a>
+		</td>
+	      </tr>
+	    </table>
+	  </td>
+	</tr>
+      </table>
+    </td>
+  </tr>
+  <% end %>
+
+  <% @entries.select{ |entry| File.directory?(File.join(@path, entry)) }.sort.each do |entry| %>
+  <tr>
+    <td align="left">
+      <% real_path = File.join(@path, entry) %>
+      <table width="100%">
+	<tr>
+	  <td valign="middle">
+	    <table border="0">
+	      <tr>
+		<td>
+		  <a href="<%= File.join(prefix, real_path) %>">
+		    <img src="/icon/folder.png" height="20px" style="vertical-align:middle">
+		  </a>
+		</td>
+		<td>
+		  <a href="<%= File.join(prefix, real_path) %>">
+		    <%= entry %>
+		  </a>
+		</td>
+	      </tr>
+	    </table>
+	  </td>
+	</tr>
+      </table>
+    </td>
+  </tr>
+  <% end %>
+
+  <% @entries.select{ |entry| File.file?(File.join(@path, entry)) }.sort.each do |entry| %>
+  <tr>
+    <td align="left">
+      <% real_path = File.join(@path, entry) %>
+
+      <table width="100%">
+	<tr>
+
+	  <td valign="middle">
+	    <table border="0">
+	      <tr>
+		<td>
+		  <% if entry =~ /\.(png|jpg)$/i %>
+		  <span class="dummylink" onClick="rewriteImage('<%= entry %>', '<%= File.join('/view', real_path) %>')">
+		    <img src="/icon/MD-photo.png" height="20px" style="vertical-align:middle">
+		  </span>
+		  <% elsif entry =~ /\.(mp4|ogg|avi|m4v)$/i %>
+		  <span class="dummylink" onClick="rewriteVideoPlayer('<%= vid %>', '<%= entry %>', '<%= File.join('/view', real_path) %>')">
+		    <img src="/icon/MD-video.png" height="20px" style="vertical-align:middle">
+		  </span>
+		  <% elsif entry =~ /\.(mp3|m4a)$/i %>
+		  <span class="dummylink" onClick="rewriteAudioPlayer('<%= aid %>', '<%= entry %>', '<%= File.join('/view', real_path) %>')">
+		    <img src="/icon/MD-music.png" height="20px" style="vertical-align:middle">
+		  </span>
+		  <% else %>
+		  <a href="<%= File.join('/download', real_path) %>">
+		    <img src="/icon/document-empty.png" height="20px" style="vertical-align:middle">
+		  </a>
+		  <% end %>
+		</td>
+		<td>
+		  <% if entry =~ /\.(png|jpg)$/i %>
+		  <span class="dummylink" onClick="rewriteImage('<%= entry %>', '<%= File.join('/view', real_path) %>')">
+		    <%= entry %>
+		  </span>
+		  <% elsif entry =~ /\.(mp4|ogg|avi|m4v)$/i %>
+		  <span class="dummylink" onClick="rewriteVideoPlayer('<%= vid %>', '<%= entry %>', '<%= File.join('/view', real_path) %>')">
+		    <%= entry %>
+		  </span>
+		  <% vid += 1 %>
+		  <% elsif entry =~ /\.(mp3|m4a)$/i %>
+		  <span class="dummylink" onClick="rewriteAudioPlayer('<%= aid %>', '<%= entry %>', '<%= File.join('/view', real_path) %>')">
+		    <%= entry %>
+		    <% aid += 1 %>
+		  </span>
+		  <% else %>
+		  <a href="<%= File.join('/download', real_path) %>">
+		    <%= entry %>
+		  </a>
+		  <% end %>
+		</td>
+	      </tr>
+	    </table>
+	  </td>
+
+	  <td align="right">
+	    <table border="0">
+	      <tr>
+		<td>
+		  <a href="<%= File.join('/download', real_path) %>">
+		    <img src="/icon/download.png" height="20px" style="vertical-align:middle">
+		  </a>
+		</td>
+		<td>
+		  <a href="<%= File.join('/download', real_path) %>">
+		    Download
+		  </a>
+		</td>
+	      </tr>
+	    </table>
+	  </td>
+
+	</tr>
+      </table>
+
+    </td>
+  </tr>  
+  <% end %>
+
+</table>
+
+
