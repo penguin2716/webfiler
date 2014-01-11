@@ -18,9 +18,9 @@ function reload(path) {
     html += "<tr valign=\"middle\">"
     html += "<td>"
     if (checkbox.getAttribute("checked") == "true") {
-	html += "<img id=\"checkboximg\" checked=\"false\" src=\"/icon/checkbox-empty.png\" height=\"20\" style=\"vertical-align:middle;\" />"
+	html += "<img class=\"invert\" id=\"checkboximg\" checked=\"false\" src=\"/icon/checkbox-empty.png\" height=\"20\" style=\"vertical-align:middle;\" />"
     } else {
-	html += "<img id=\"checkboximg\" checked=\"true\" src=\"/icon/checkbox.png\" height=\"20\" style=\"vertical-align:middle;\" />"
+	html += "<img class=\"invert\" id=\"checkboximg\" checked=\"true\" src=\"/icon/checkbox.png\" height=\"20\" style=\"vertical-align:middle;\" />"
     }
     html += "</td>"
     html += "<td>"

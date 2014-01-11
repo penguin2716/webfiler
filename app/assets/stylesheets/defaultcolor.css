@@ -1,0 +1,42 @@
+h2 {
+    color: #30353b;
+}
+
+h3 {
+    color: #30353b;
+}
+
+p {
+    color: #30353b;
+}
+
+.text {
+    color: #30353b;
+}
+
+.footer-text {
+    color: #f3f3f0;
+}
+
+.dummylink{
+    text-decoration: underline;
+    color: #3070b7;
+    cursor: pointer;
+}
+
+img.invert {
+ -webkit-filter: invert(100%);  
+}
+
+img.little-invert {
+ -webkit-filter: invert(25%);  
+}
+
+.dummylink:hover   { color: #63a2ce; }
+.dummylink:active  { color: #c4ecf6; }
+
+a:link    { color: #3070b7; }
+a:visited { color: #e87137; }
+a:hover   { color: #63a2ce; }
+a:active  { color: #c4ecf6; }
+

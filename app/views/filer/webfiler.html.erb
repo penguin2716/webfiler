@@ -4,9 +4,9 @@
       body {
       height:95%;
       overflow-x: hidden;
+      background-color: #f3f3f0;
       }
 
-      /* ヘッダー*/
       #header {
       width: 100%;
       margin-left: -10px;
@@ -18,15 +18,15 @@
       }
 
       .title {
-      color: white;
-      background-color: gray;
+      color: #f3f3f0;
+      background-color: #30353b;
       width: 100%;
       padding: 20px;
       }
 
       #footer {
-      color: white;
-      background-color: gray;
+      color: #f3f3f0;
+      background-color: #30353b;
       width: 100%;
 
       position:relative;
@@ -64,11 +64,11 @@
     <td valign="top">
       <div id="mediaview" style="padding: 5px 20px;">
 	<h2>Media View</h2>
-	Choose the media file to play in the left contents.
+	<div class="text">Choose the media file to play in the left contents.</div>
 	<div align="center" style="padding: 50px 10px;">
-	  <img src="/icon/MD-video.png" height="250">
-	  <img src="/icon/MD-music.png" height="250">
-	  <img src="/icon/MD-photo.png" height="250">
+	  <img class="little-invert" src="/icon/MD-video.png" height="250">
+	  <img class="little-invert" src="/icon/MD-music.png" height="250">
+	  <img class="little-invert" src="/icon/MD-photo.png" height="250">
 	</div>
       </div>
     </td>
@@ -81,10 +81,12 @@
       <table border="0">
 	<tr valign="middle">
 	  <td>
-	    <img id="checkboximg" checked="false" src="/icon/checkbox-empty.png" height="20" style="vertical-align:middle;" />
+	    <img class="invert" id="checkboximg" checked="false" src="/icon/checkbox-empty.png" height="20" style="vertical-align:middle;" />
 	  </td>
 	  <td>
-	    Show hidden files
+	    <div class="footer-text">
+	      Show hidden files
+	    </div> 
 	  </td>
 	</tr>
       </table>
