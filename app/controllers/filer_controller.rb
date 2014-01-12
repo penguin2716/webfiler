@@ -30,6 +30,11 @@ class FilerController < ApplicationController
     end
   end
 
+  def preview
+    @path = "/" + params["path"]
+    @path += "." + params["format"] if params["format"]
+  end
+
   def webfiler
     @path = ENV["HOME"]
     @entries = Dir.entries(@path).map{ |entry|

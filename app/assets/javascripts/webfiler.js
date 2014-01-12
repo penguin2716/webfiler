@@ -7,7 +7,7 @@ function reload(path) {
     } else {
 	prefix = "/listall"
     }
-    var html = "<iframe id=\"filelist\" src=\"" + prefix + currentPath + "\" width=\"100%\" height=\"98%\" frameborder=\"0\" scrolling=\"auto\"></iframe>";
+    var html = "<iframe id=\"filelist\" src=\"" + prefix + currentPath + "\" frameborder=\"0\" scrolling=\"auto\"></iframe>";
 
     document.getElementById('filelist_frame').innerHTML = html;
 
@@ -18,13 +18,13 @@ function reload(path) {
     html += "<tr valign=\"middle\">"
     html += "<td>"
     if (checkbox.getAttribute("checked") == "true") {
-	html += "<img class=\"invert\" id=\"checkboximg\" checked=\"false\" src=\"/icon/checkbox-empty.png\" height=\"20\" style=\"vertical-align:middle;\" />"
+	html += "<img class=\"invert\" id=\"checkboximg\" checked=\"false\" src=\"/icon/checkbox-empty.png\" height=\"20\" />"
     } else {
-	html += "<img class=\"invert\" id=\"checkboximg\" checked=\"true\" src=\"/icon/checkbox.png\" height=\"20\" style=\"vertical-align:middle;\" />"
+	html += "<img class=\"invert\" id=\"checkboximg\" checked=\"true\" src=\"/icon/checkbox.png\" height=\"20\" />"
     }
     html += "</td>"
     html += "<td>"
-    html += "Show hidden files"
+    html += "<div class=\"footer-text\">Show hidden files</div>"
     html += "</td>"
     html += "</tr>"
     html += "</table>"

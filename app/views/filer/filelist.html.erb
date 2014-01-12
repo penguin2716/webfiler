@@ -5,13 +5,22 @@
       //-->
 </script>
 
-<% vid = 0 %>
-<% aid = 0 %>
 <% prefix = (params["action"] == "filelist_all") ? "/listall" : "/list" %>
+
+<style type="text/css">
+<!--
+
+#directory-content {
+width: 100%;
+}
+
+//-->
+</style>
+
 
 <h2>Contents</h2>
 
-<table width="400" cellspacing="0" cellpadding="0" border="0">
+<table id="directory-content" cellspacing="0" cellpadding="0" border="0">
 
   <% if File.dirname(@path) =~ /#{ENV["HOME"]}/ %>
   <tr>
@@ -81,15 +90,15 @@
 	      <tr>
 		<td>
 		  <% if entry =~ /\.(png|jpg)$/i %>
-		  <span class="dummylink" onClick="rewriteImage('<%= entry %>', '<%= File.join('/view', real_path) %>')">
+		  <span class="dummylink" onClick="rewriteiframe('<%= real_path %>')">
 		    <img class="little-invert" src="/icon/MD-photo.png" height="20px" style="vertical-align:middle">
 		  </span>
 		  <% elsif entry =~ /\.(mp4|ogg|avi|m4v)$/i %>
-		  <span class="dummylink" onClick="rewriteVideoPlayer('<%= vid %>', '<%= entry %>', '<%= File.join('/view', real_path) %>')">
+		  <span class="dummylink" onClick="rewriteiframe('<%= real_path %>')">
 		    <img class="little-invert" src="/icon/MD-video.png" height="20px" style="vertical-align:middle">
 		  </span>
 		  <% elsif entry =~ /\.(mp3|m4a)$/i %>
-		  <span class="dummylink" onClick="rewriteAudioPlayer('<%= aid %>', '<%= entry %>', '<%= File.join('/view', real_path) %>')">
+		  <span class="dummylink" onClick="rewriteiframe('<%= real_path %>')">
 		    <img class="little-invert" src="/icon/MD-music.png" height="20px" style="vertical-align:middle">
 		  </span>
 		  <% else %>
@@ -100,18 +109,16 @@
 		</td>
 		<td>
 		  <% if entry =~ /\.(png|jpg)$/i %>
-		  <span class="dummylink" onClick="rewriteImage('<%= entry %>', '<%= File.join('/view', real_path) %>')">
+		  <span class="dummylink" onClick="rewriteiframe('<%= real_path %>')">
 		    <%= entry %>
 		  </span>
 		  <% elsif entry =~ /\.(mp4|ogg|avi|m4v)$/i %>
-		  <span class="dummylink" onClick="rewriteVideoPlayer('<%= vid %>', '<%= entry %>', '<%= File.join('/view', real_path) %>')">
+		  <span class="dummylink" onClick="rewriteiframe('<%= real_path %>')">
 		    <%= entry %>
 		  </span>
-		  <% vid += 1 %>
 		  <% elsif entry =~ /\.(mp3|m4a)$/i %>
-		  <span class="dummylink" onClick="rewriteAudioPlayer('<%= aid %>', '<%= entry %>', '<%= File.join('/view', real_path) %>')">
+		  <span class="dummylink" onClick="rewriteiframe('<%= real_path %>')">
 		    <%= entry %>
-		    <% aid += 1 %>
 		  </span>
 		  <% else %>
 		  <a href="<%= File.join('/download', real_path) %>">

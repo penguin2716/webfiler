@@ -1,6 +1,7 @@
 Webfiler::Application.routes.draw do
 
   root 'filer#webfiler'
+  get 'preview/*path.preview' => 'filer#preview'
   get 'view/*path' => 'filer#view'
   get 'download/*path' => 'filer#download'
   get 'list/*path' => 'filer#filelist'

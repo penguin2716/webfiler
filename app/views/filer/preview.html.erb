@@ -1,0 +1,30 @@
+<h2><%= File.basename(@path) %></h2>
+
+<% if @path =~ /\.(png|jpg)$/i %>
+<a href="<%= File.join('/download', @path) %>">
+  <img class="preview" src="<%= File.join('/view', @path) %>">
+</a>
+
+<% elsif @path =~ /\.(mp4|ogg|avi|m4v)$/i %>
+<video class="preview" id="video" src="<%= File.join('/view', @path) %>" preload="none" controls autoplay >
+  <p>Your browser doesn't support video tag.</p>
+</video>
+
+<% elsif @path =~ /\.(mp3|m4a)$/i %>
+<audio class="preview" id="audio" src="<%= File.join('/view', @path) %>" preload="none" controls autoplay >
+  <p>Your browser doesn't support audio tag.</p>
+</audio>
+
+<% else %>
+<div class="text">Choose the media file to play in the left contents.</div>
+<table border="0">
+  <tr>
+    <td><img class="little-invert" src="/icon/MD-video.png" height="250"></td>
+    <td><img class="little-invert" src="/icon/MD-music.png" height="250"></td>
+    <td><img class="little-invert" src="/icon/MD-photo.png" height="250"></td>
+  </tr>
+</table>
+
+<% end %>
+
+

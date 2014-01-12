@@ -24,12 +24,16 @@ p {
     cursor: pointer;
 }
 
+img {
+    vertical-align: middle;
+}
+
 img.invert {
- -webkit-filter: invert(100%);  
+    -webkit-filter: invert(100%);
 }
 
 img.little-invert {
- -webkit-filter: invert(25%);  
+    -webkit-filter: invert(25%);
 }
 
 .dummylink:hover   { color: #63a2ce; }
